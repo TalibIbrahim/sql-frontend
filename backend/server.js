@@ -16,6 +16,9 @@ app.get("/", (req, res) => {
 const restaurantsRouter = require("./routes/restaurants");
 app.use("/restaurants", restaurantsRouter);
 
+const usersRouter = require("./routes/users");
+app.use("/users", usersRouter);
+
 // Catch all unhandled routes
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route.", 404);

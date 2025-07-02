@@ -1,6 +1,7 @@
 // src/components/Navbar.jsx
 import React from "react";
 import { AppBar, Toolbar, Box, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -26,9 +27,15 @@ const Navbar = () => {
 
         {/* Right: Navigation Links */}
         <Box sx={{ display: "flex", gap: 3, marginRight: 2 }}>
-          {["Home", "About", "Contact"].map((text) => (
+          {[
+            { label: "Home", path: "/" },
+            { label: "About", path: "/about" },
+            { label: "Contact", path: "/contact" },
+          ].map(({ label, path }) => (
             <Button
-              key={text}
+              key={label}
+              component={Link}
+              to={path}
               sx={{
                 color: "var(--color-white)",
                 fontWeight: 400,
@@ -37,12 +44,12 @@ const Navbar = () => {
                 fontFamily: "Roboto, sans-serif",
                 transition: "0.3s",
                 "&:hover": {
-                  color: "#1976d2", // blue hover color
+                  color: "#1976d2",
                   backgroundColor: "transparent",
                 },
               }}
             >
-              {text}
+              {label}
             </Button>
           ))}
         </Box>
